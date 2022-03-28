@@ -1,0 +1,36 @@
+//Create the first component by ng g c component name 
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-test',
+  template: `<div>
+              Inline Template
+              </div>`,
+  styles: [`
+              div{
+                color:red;
+                text-align: -webkit-center;
+               }
+          `]
+})
+export class TestComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+
+//embed the simple heading in the app.component file
+
+<div>
+  <style>
+    h1{text-align: center;}
+</style>
+<h1>
+  Welcome to {{title}}!
+</h1>
+<app-test></app-test>
+</div>
