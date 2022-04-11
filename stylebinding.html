@@ -1,0 +1,43 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-test',
+  template: `
+    <h2>
+      Welcome {{name}}
+    </h2>
+    <h2 [style.color]="'orange'">Style Binding</h2> 
+    <!-- this will directly apply the color -->
+    <h2 [style.color]="hasError ? 'red' :'green' ">Style Binding</h2>
+    <!-- this will apply the color according the condition of the haswerror we can use this for the condition types  -->
+    <h2 [style.color]="highlightColor">Style Binding</h2> 
+    <!-- we camn use the style proper by declaring the variable outside in the class sction and then by declare
+    in the html section by style.color or anything we can use it -->
+    <h2 [ngStyle]="titleStyles">Style Binding</h2> 
+    <!-- ngStyle is used for the multiple styling of a class -->
+    
+    
+  `,
+  styles: [ `
+        
+  
+  `]
+})
+export class TestComponent implements OnInit {
+
+  public name="Vikrant Thakur";
+  public hasError=true;
+  public isSpecial=true;
+  public highlightColor="purple";
+  public titleStyles={
+    color:"yellow",
+    fontStyle:"italic"
+
+  }
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
