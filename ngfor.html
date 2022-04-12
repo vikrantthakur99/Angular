@@ -1,0 +1,26 @@
+import { Component, OnInit } from '@angular/core';
+import { reduce } from 'rxjs';
+
+@Component({
+  selector: 'app-test',
+  template: `
+    <div *ngFor="let data of colors; index as i">
+      <!-- here to use the for we declare a variable and render it in the html -->
+        <h2>{{i}} {{data}}</h2>
+    </div>
+  `,
+  styles: [ `
+        
+  
+  `]
+})
+export class TestComponent implements OnInit {
+
+  public colors=["red","blue","green","yellow"];
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
