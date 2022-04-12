@@ -1,0 +1,55 @@
+-testcomponent
+import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
+import { reduce } from 'rxjs';
+
+@Component({
+  selector: 'app-test',
+  template: `
+  <h2>{{"Hello " + parentData}}</h2> 
+  <!-- here we have deifned that our parentdata is in the app.componet.html file which we have defined in the
+  app component.ts file -->
+  <button (click)="fireEvent()"> Send Event</button> 
+  `,
+  styles: [`
+        
+  
+  `]
+})
+export class TestComponent implements OnInit {
+
+  @Input() public parentData;
+    // giving the input and we can also write as @Input('parentData') public name; 
+    @Output() public childEvent= new  EventEmitter();
+
+  constructor() { }
+  ngOnInit(): void {
+  }
+
+  fireEvent(){
+    this.childEvent.emit('Hello Vikrant Singh Thakur');
+  }
+
+}
+
+-appcomponent.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'binding';
+  public name="Vikrant";
+  public message="";
+}
+	
+
+-appcomponent.html
+<div style="text-align:center">
+<h1>{{message}}</h1>
+
+</div>
+<app-test (childEvent)="message=$event" [parentData]="name"></app-test>
+
