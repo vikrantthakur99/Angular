@@ -1,0 +1,24 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { reduce } from 'rxjs';
+
+@Component({
+  selector: 'app-test',
+  template: `
+  <h2>{{"Hello " + parentData}}</h2> 
+  <!-- here we have deifned that our parentdata is in the app.componet.html file which we have defined in the
+  app component.ts file -->
+  `,
+  styles: [`
+        
+  
+  `]
+})
+export class TestComponent implements OnInit {
+
+  @Input() public parentData;
+    // giving the input and we can also write as @Input('parentData') public name; 
+
+  constructor() { }
+  ngOnInit(): void {
+  }
+}
