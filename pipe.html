@@ -1,0 +1,47 @@
+import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
+import { reduce } from 'rxjs';
+
+@Component({
+  selector: 'app-test',
+  template: `
+      <h2>{{name  | lowercase}}</h2>
+      <!-- lowercase pipe -->
+      <h2>{{name1  | uppercase}}</h2>
+      <!-- uppercase pipe -->
+      <h2>{{person | json}}</h2>
+        <!-- json type pipe -->
+        <h2>{{5.678 | number:'1.2-3'}}</h2>
+        <!-- 1.2-3 -- it will define that there will one at the number place and upto max 3 at the decimal side -->
+        <h2>{{5.678 | number:'3.4-5'}}</h2>
+        <h2>{{5.678 | number:'3.1-2'}}</h2>
+        <!-- number pipe -->
+        <h2>{{5 | currency}}</h2>
+        <h2>{{5 | currency:'INR'}}</h2>
+        <h2>{{5 | currency:'INR':'code'}}</h2>
+
+        <h2>{{Date}}</h2>
+        <h2>{{Date | date:'short'}}</h2>
+        <h2>{{Date | date:'shortDate'}}</h2>
+        <h2>{{Date | date:'shortTime'}}</h2>
+        
+  `,
+  styles: [`
+        
+  
+  `]
+})
+export class TestComponent implements OnInit {
+
+  public name="Vikrant Thakur";
+  public name1="honey Thakur";
+  public message="Coding";
+  public person={
+    "firstName" : "John",
+    "lastName":"Doe"
+  }
+  public Date=new Date();
+
+  constructor() { }
+  ngOnInit(): void {
+  }
+}
