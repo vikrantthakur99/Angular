@@ -1,0 +1,87 @@
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+
+@Component({
+  selector: 'app-e-info',
+  templateUrl: './e-info.component.html',
+  styleUrls: ['./e-info.component.css'],
+  providers:[DataService]
+})
+export class EInfoComponent implements OnInit {
+
+  infoReceived1: string[]=[];  
+  infoReceived2: string[]=[];  
+  infoReceived3: string[]=[];  
+
+  // info is getting recived by this method
+  getInfoFromService1(){
+    this.infoReceived1= this.dservice.getInfo1()
+  }
+  getInfoFromService2(){
+    this.infoReceived2= this.dservice.getInfo2()
+  }
+  getInfoFromService3(){
+    this.infoReceived3= this.dservice.getInfo3()
+  }
+
+  constructor(private dservice: DataService) { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+
+
+<div>
+  <h1>You know what to do!!!
+    <style>
+      h1{text-align: center;}
+      </style>
+  </h1>
+</div>
+<app-e-info></app-e-info>
+<router-outlet></router-outlet>
+
+
+<button type="button" name="button" (click)='getInfoFromService1()'>Employee1</button>
+<ul class="list-group">
+    <li *ngFor ="let info of infoReceived1" class="list-group-info">{{info}}</li>
+</ul>
+
+<button type="button" name="button" (click)='getInfoFromService2()'>Employee2</button>
+<ul class="list-group">
+    <li *ngFor ="let info of infoReceived2" class="list-group-info">{{info}}</li>
+</ul>
+
+<button type="button" name="button" (click)='getInfoFromService3()'>Employee3</button>
+<ul class="list-group">
+    <li *ngFor ="let info of infoReceived3" class="list-group-info">{{info}}</li>
+</ul>
+
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataService {
+
+  info1: string[]=["Vikrant",'E100','vikrant@gmail.com']
+  info2: string[]=["Anurag",'E101','anurag@gmail.com']
+  info3: string[]=["Shubham",'E102','shubham@gmail.com']
+
+  getInfo1():string[]{
+    return this.info1
+  }
+
+  getInfo2():string[]{
+    return this.info2
+  }
+
+  getInfo3():string[]{
+    return this.info3
+  }
+
+  constructor() { }
+}
